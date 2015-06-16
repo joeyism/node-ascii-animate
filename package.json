@@ -1,5 +1,5 @@
 {
-  "name": "ascii-animate",
+  "name": "ascii-animation",
   "version": "1.0.0",
   "description": "A tool that displays ascii animation",
   "main": "index.js",

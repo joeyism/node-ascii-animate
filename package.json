@@ -1,0 +1,28 @@
+{
+  "name": "ascii-animate",
+  "version": "1.0.0",
+  "description": "A tool that displays ascii animation",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeyism/node-ascii-animate.git"
+  },
+  "keywords": [
+    "ascii",
+    "animate",
+    "fun"
+  ],
+  "author": "Joey Sham <sham.joey@gmail.com> (http://www.joeyism.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeyism/node-ascii-animate/issues"
+  },
+  "homepage": "https://github.com/joeyism/node-ascii-animate#readme",
+  "dependencies": {
+    "async": "^1.2.1",
+    "sleep": "^2.0.0"
+  }
+}

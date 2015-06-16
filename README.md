@@ -1,0 +1,42 @@
+# Ascii Animation
+
+A library that animates ASCII characters
+
+### Install
+
+To install, run
+
+    > npm install --save ascii-animation
+
+Then require it as
+
+    var animation = require('ascii-animation');
+
+### Methods
+
+**animate**
+
+The main method that animates. To use, run the code as
+
+    animation.animate([array with each frame],
+                      [will loop this condition until it is false],
+                      [callback])
+
+
+**secondsPerFrame**
+
+Sets the seconds to wait between each frame
+
+    animation.secondsPerFrame(0.5);
+
+**usecondsPerFrame**
+
+Sets the microseconds to wait between frame
+
+    animation.usecondsPerFrame(100000);
+
+**updateCondition**
+
+Updates the condition
+
+    animation.updateCondition(false);

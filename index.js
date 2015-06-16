@@ -20,12 +20,13 @@ var updateCondition = function(cond){
 var animate = function(animationArray, cond, callback){
     condition = cond || condition;
     async.whilst(condition,
-                 function(){
-                    animationArray.forEach(function(sprite){
-                        console.log(clear);
-                        console.log(sprite);
-                        sleep.usleep(usPerFrame);
-                    });
+                 function(callback){
+                     animationArray.forEach(function(sprite){
+                         console.log(clear);
+                         console.log(sprite);
+                         sleep.usleep(usPerFrame);
+                     });
+                     callback();
                  },
                  callback);
 };

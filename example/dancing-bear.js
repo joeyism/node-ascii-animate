@@ -73,5 +73,6 @@ bear[4]=
 
 animation.animate(bear, function(){
     // As long as the random number is not 5, it'll loop
-return (Math.round(Math.random()*10) + 1 !== 5);
+    return true;
+    //return (Math.round(Math.random()*10) + 1 !== 5);
 });

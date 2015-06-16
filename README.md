@@ -40,3 +40,7 @@ Sets the microseconds to wait between frame
 Updates the condition
 
     animation.updateCondition(false);
+
+### Example
+
+For an example, please see [dancing bear](https://github.com/joeyism/node-dancing-bear)

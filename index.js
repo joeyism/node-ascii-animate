@@ -4,6 +4,9 @@ require('colors');
 var colors= ['black','red','green','yellow','blue','magenta','cyan','white','grey'];
 var colorize = false;
 var bold = false;
+var condition = true;
+var clear = '\033[2J';
+var msPerFrame = 200;
 
 var colorizeFunction = function(){
     colorize = true;
@@ -22,11 +25,6 @@ var randColor = function(){
     var rand = Math.floor(Math.random()*(colors.length));
     return colors[rand];
 };
-
-var condition = true;
-var clear = '\033[2J';
-
-var msPerFrame = 200;
 
 var secondsPerFrame = function(seconds){
     msPerFrame = 1000*seconds;
@@ -62,8 +60,11 @@ var animationFunction = function(animationArray){
 
 var animate = function(animationArray, cond, callback){
     condition = cond || condition;
-
-    animationFunction(animationArray); 
+    async.whilst(function(){return true;},
+    function(){
+    animationFunction(animationArray);
+    },
+    function(){console.log('////////////////////////////////////////');});
 
     return {
         colorize: colorizeFunction(),

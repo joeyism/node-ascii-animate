@@ -2,6 +2,7 @@ var sleep = require('sleep');
 var async = require('async');
 require('colors');
 var colors= ['black','red','green','yellow','blue','magenta','cyan','white','grey'];
+var colorize = false;
 
 var randColor = function(){
     var rand = Math.floor(Math.random()*(colors.length));
@@ -31,12 +32,17 @@ var animate = function(animationArray, cond, callback){
                  function(callback){
                      animationArray.forEach(function(sprite){
                          console.log(clear);
-                         console.log(sprite[randColor()]);
+                         colorize? console.log(sprite[randColor()]): console.log(sprite);
                          sleep.usleep(usPerFrame);
                      });
                      callback();
                  },
                  callback);
+    return {
+        colorize: function(){
+            colorize = true;
+        }
+    };
 };
 
 module.exports = {

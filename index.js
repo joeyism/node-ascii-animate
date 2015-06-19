@@ -3,6 +3,20 @@ var async = require('async');
 require('colors');
 var colors= ['black','red','green','yellow','blue','magenta','cyan','white','grey'];
 var colorize = false;
+var bold = false;
+
+var colorizeFunction = function(){
+    colorize = true;
+    return {
+        bold: boldFunction
+    }
+};
+var boldFunction = function(){
+    bold = true;
+    return {
+        colorize: colorizeFunction
+    }
+};
 
 var randColor = function(){
     var rand = Math.floor(Math.random()*(colors.length));
@@ -12,42 +26,54 @@ var randColor = function(){
 var condition = true;
 var clear = '\033[2J';
 
-var usPerFrame = 200000;
+var msPerFrame = 200;
 
 var secondsPerFrame = function(seconds){
-    usPerFrame = 1000000*seconds;
+    msPerFrame = 1000*seconds;
 };
 
-var usecondsPerFrame = function(us){
-    usPerFrame = us;
+var msecondsPerFrame = function(us){
+    msPerFrame = us;
 };
 
 var updateCondition = function(cond){
     condition = cond;
 };
 
+var fancyDisplay = function(sprite){
+    var display = colorize ? sprite[randColor()]: sprite;
+    display = bold ? display['bold'] : bold;
+    return display;
+};
+
+var nextFrame = function(animationArray, i){
+    var sprite = animationArray[i];
+    i = (animationArray.length-1 === i)? 0: i+1;
+    setTimeout(function(){
+        console.log(clear);
+        console.log(fancyDisplay(sprite));
+        nextFrame(animationArray, i);
+    }, msPerFrame);
+};
+
+var animationFunction = function(animationArray){
+    nextFrame(animationArray, 0);
+};
+
 var animate = function(animationArray, cond, callback){
     condition = cond || condition;
-    async.whilst(condition,
-                 function(callback){
-                     animationArray.forEach(function(sprite){
-                         console.log(clear);
-                         colorize? console.log(sprite[randColor()]): console.log(sprite);
-                         sleep.usleep(usPerFrame);
-                     });
-                     callback();
-                 },
-                 callback);
+
+    animationFunction(animationArray); 
+
     return {
-        colorize: function(){
-            colorize = true;
-        }
+        colorize: colorizeFunction(),
+        bold: boldFunction
     };
 };
 
 module.exports = {
     secondsPerFrame: secondsPerFrame,
-    usecondsPerFrame: usecondsPerFrame,
+    msecondsPerFrame: msecondsPerFrame,
     updateCondition: updateCondition,
     animate: animate
 };

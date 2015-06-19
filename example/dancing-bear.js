@@ -1,7 +1,7 @@
 'use strict';
 var animation = require('../index');
 var bear = [];
-bear[1]='    _--_     _--_ \n'+  
+bear[0]='    _--_     _--_ \n'+  
     '   (    )~~~(    )   \n'+ 
     '    \\           /    \n'+  
     '     (  \' _ `  )     \n'+  
@@ -17,7 +17,7 @@ bear[1]='    _--_     _--_ \n'+
     '     /   !   /       \n'+  
     '    !   /__ /___     \n'+  
     '    (______)____)    \n'; 
-bear[2] = 
+bear[1] = 
     '   _--_     _--_     \n'+  
     '  (    )~~~(    )    \n'+   
     '   \\           /     \n'+   
@@ -35,7 +35,7 @@ bear[2] =
     '     /  /__   \\__/   \n'+   
     '    (______)         \n';   
 
-bear[3] =  
+bear[2] =  
     '   _--_     _--_       \n'+  
     '  (    )~~~(    )      \n'+ 
     '   \\           /       \n'+  
@@ -53,7 +53,7 @@ bear[3] =
     ' (  \\---__/ `-_    /   \n'+  
     '  \\__)         `-_/    \n'; 
 
-bear[4]=  
+bear[3]=  
     '    _--_     _--_         \n'+ 
     '   (    )~~~(    )        \n'+ 
     '    \\           /         \n'+ 
@@ -75,4 +75,4 @@ animation.animate(bear, function(){
     // As long as the random number is not 5, it'll loop
     return true;
     //return (Math.round(Math.random()*10) + 1 !== 5);
-});
+}).bold().colorize();

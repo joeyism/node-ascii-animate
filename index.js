@@ -1,5 +1,13 @@
 var sleep = require('sleep');
 var async = require('async');
+require('colors');
+var colors= ['black','red','green','yellow','blue','magenta','cyan','white','grey'];
+
+var randColor = function(){
+    var rand = Math.floor(Math.random()*(colors.length));
+    return colors[rand];
+};
+
 var condition = true;
 var clear = '\033[2J';
 
@@ -23,7 +31,7 @@ var animate = function(animationArray, cond, callback){
                  function(callback){
                      animationArray.forEach(function(sprite){
                          console.log(clear);
-                         console.log(sprite);
+                         console.log(sprite[randColor()]);
                          sleep.usleep(usPerFrame);
                      });
                      callback();

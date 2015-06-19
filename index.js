@@ -60,11 +60,15 @@ var animationFunction = function(animationArray){
 
 var animate = function(animationArray, cond, callback){
     condition = cond || condition;
-    async.whilst(function(){return true;},
-    function(){
-    animationFunction(animationArray);
+    async.whilst(function(){
+        return true;
     },
-    function(){console.log('////////////////////////////////////////');});
+    function(){
+        animationFunction(animationArray);
+    },
+    function(){
+        console.log('////////////////////////////////////////');
+    });
 
     return {
         colorize: colorizeFunction(),

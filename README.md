@@ -44,3 +44,10 @@ Updates the condition
 ### Example
 
 For an example, please see [dancing bear](https://github.com/joeyism/node-dancing-bear)
+
+### Version
+**1.0.2**
+* Fixed bug that didn't allow on windows
+
+**1.0.0**
+* First release

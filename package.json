@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/joeyism/node-ascii-animate#readme",
   "dependencies": {
-    "async": "^1.2.1"
+    "async": "^1.2.1",
+    "colors": "^1.1.2"
   }
 }

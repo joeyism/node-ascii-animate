@@ -7,6 +7,7 @@ var bold = false;
 var condition = true;
 var clear = '\033[2J';
 var msPerFrame = 200;
+var globCallback;
 
 var colorizeFunction = function(){
     colorize = true;
@@ -47,11 +48,16 @@ var fancyDisplay = function(sprite){
 var nextFrame = function(animationArray, i){
     var sprite = animationArray[i];
     i = (animationArray.length-1 === i)? 0: i+1;
-    setTimeout(function(){
-        console.log(clear);
-        console.log(fancyDisplay(sprite));
-        nextFrame(animationArray, i);
-    }, msPerFrame);
+    if(condition()){
+        setTimeout(function(){
+            console.log(clear);
+            console.log(fancyDisplay(sprite));
+            nextFrame(animationArray, i);
+        }, msPerFrame);
+    }
+    else {
+        globCallback();
+    }
 };
 
 var animationFunction = function(animationArray){
@@ -59,16 +65,13 @@ var animationFunction = function(animationArray){
 };
 
 var animate = function(animationArray, cond, callback){
+    globCallback = callback;
     condition = cond || condition;
-    async.whilst(function(){
-        return true;
-    },
+    async.whilst(condition,
     function(){
         animationFunction(animationArray);
     },
-    function(){
-        console.log('////////////////////////////////////////');
-    });
+    callback);
 
     return {
         colorize: colorizeFunction(),

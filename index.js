@@ -1,4 +1,3 @@
-var sleep = require('sleep');
 var async = require('async');
 require('colors');
 var colors= ['black','red','green','yellow','blue','magenta','cyan','white','grey'];

@@ -46,6 +46,9 @@ Updates the condition
 For an example, please see [dancing bear](https://github.com/joeyism/node-dancing-bear)
 
 ### Version
+**1.0.4**
+* Fixed sleep dependency
+
 **1.0.3**
 * Fixed require colors bug
 
